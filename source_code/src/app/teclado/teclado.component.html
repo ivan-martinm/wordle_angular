@@ -1,0 +1,36 @@
+<div class="container">
+  <app-tablero [casillas]="casillas" />
+  <hr />
+  <div
+    *ngFor="let indice of [1, 2, 3]; let i = index"
+    class="row justify-content-center"
+  >
+    <input
+      *ngFor="let tecla of filas[i]; let j = index"
+      class="col"
+      [ngStyle]="casillaStyle"
+      type="button"
+      [value]="filas[i][j].toUpperCase()"
+      (click)="comprobarLetra(filas[i][j]); registrarPulsacion(filas[i][j])"
+    />
+  </div>
+  <div class="row justify-content-center">
+    <input class="col-2" type="button" value="Borrar" (click)="borrarLetra(); registrarPulsacion('Borrar')" />
+    <input
+      class="col-2"
+      type="button"
+      value="Enviar"
+      (click)="terminarTurno(); registrarPulsacion('Enviar')"
+    />
+  </div>
+  <hr />
+  <div class="row justify-content-center" *ngIf="terminado">
+    <h2 class="col-12 text-center"><strong>{{palabraSecreta.join("").toUpperCase()}}</strong></h2>
+    <input
+      class="col-4"
+      type="button"
+      value="Volver a jugar"
+      (click)="comenzarPartida()"
+    />
+  </div>
+</div>

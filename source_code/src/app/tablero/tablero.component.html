@@ -1,0 +1,16 @@
+<div class="container">
+  <hr />
+  <div
+    *ngFor="let indice of casillas; let i = index"
+    class="row justify-content-center"
+  >
+    <div
+      *ngFor="let letra of [1, 2, 3, 4, 5]; let j = index"
+      class="col-2 square"
+      type="text"
+      [ngStyle]="aplicarEstilo(casillas[i][j].estado)"
+    >
+      <strong>{{ casillas[i][j].letra }}</strong>
+    </div>
+  </div>
+</div>
